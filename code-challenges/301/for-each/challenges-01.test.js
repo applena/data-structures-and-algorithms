@@ -59,10 +59,11 @@ const removeOne = (num, arr) => {
   if (num % 3 === 2) {
     arr.pop();
   }
+}
 
 const removeElements = (arr, callback) => {
   for (let i=0; i < arr.length; i++){
-    callback(num, arr);
+    callback(arr[i], arr);
   }
   return arr;
 }
@@ -74,7 +75,8 @@ Write a function named removeWithForEach that produces the same output as challe
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithForEach = (arr, callback) => {
-  // Solution code here...
+  arr.forEach( value => callback(value, arr));
+  return arr;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -88,7 +90,7 @@ This anonymous function should accept up to three arguments: the element, the in
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithAnon = (arr) => {
-  // Solution code here...
+  arr.forEach( (theElement, index, arr) =>  )
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -161,7 +163,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should remove three elements from the array', () => {
     expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
     expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
