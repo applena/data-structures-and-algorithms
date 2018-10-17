@@ -140,8 +140,21 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  let outArr = [];
+  arr.forEach(value => {
+    if (value % 3===0 && value % 5 === 0){
+      outArr.push('Fizz Buzz');
+    } else if (value % 3 === 0){
+      outArr.push('Fizz');
+    } else if (value % 5 === 0){
+      outArr.push('Buzz');
+    } else {
+      outArr.push(value);
+    }
+  })
+  return outArr;
 }
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
