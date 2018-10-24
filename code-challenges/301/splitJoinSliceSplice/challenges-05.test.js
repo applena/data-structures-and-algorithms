@@ -159,7 +159,7 @@ const removeLastCharacters = (str, numberOfCharacters) => {
   } else if (numberOfCharacters<0) {
     return str;
   } else {
-    return "";
+    return '';
   }
 };
 
