@@ -71,7 +71,10 @@ let starWarsData = [{
 }]
 
 const returnNames = (arr) => {
-  // Solution code here...
+  return arr.reduce( function(names, value){
+    names.push(value.name);
+    return names;
+  }, [])
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -136,7 +139,10 @@ const characters = [
 ];
 
 const countNumberOfChildren = (arr) => {
-  // Solution code here...
+  return arr.reduce( function(children, value) {
+    children = value.children ? value.children.length+children : children;
+    return children;
+  },0)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -146,11 +152,14 @@ Write a function that, given an array of numbers as input, uses reduce to calcul
 
 Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
-
 const calculateAverage = (arr) => {
-  // Solution code here...
+  const acc = arr.reduce( function(acc, value) {
+    acc.sum = value + acc.sum;
+    acc.count++;
+    return acc;
+  },{ count: 0, sum: 0 })
+  return acc.sum/acc.count
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
@@ -158,7 +167,6 @@ Write a function named countPrimeNumbers that, given an array elements as input,
 
 You are welcome to use the provided isPrime function.
 ------------------------------------------------------------------------------------------------ */
-
 const isPrime = (value) => {
   for (let i = 2; i < value; i++) {
     if (value % i === 0) {
@@ -169,9 +177,13 @@ const isPrime = (value) => {
 };
 
 const countPrimeNumbers = (arr) => {
-  // Solution code here...
+  return arr.reduce( function(acc, value){
+    if(isPrime(value)){
+      acc.push(value);
+    }
+    return acc;
+  },[])
 }
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
