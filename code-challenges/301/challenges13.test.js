@@ -161,7 +161,16 @@ For example, ['Tuesday', 'Monday', 'Wednesday and Thursday', 'Tuesday 2', 'Thurs
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 const sortByDay = (arr) => {
-  // Solution code here...
+  const newArray = [];
+  daysOfWeek.map(day => {
+    const tempArray = [];
+    arr.forEach(value => {
+      if(value.includes(day))
+        tempArray.push(value);
+    })
+    newArray.push(tempArray);
+  })
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
