@@ -35,6 +35,7 @@ class LinkedList {
   }
 
   includes(value){
+    if(!value){throw 'you must enter a search value';}
     //assuming that the vaule is the head until proven otherwise
     let matchingNode = this.head;
 
@@ -49,6 +50,8 @@ class LinkedList {
 
   print(){
     // Define a method called print which takes in no arguments and outputs all of the current Node values in the Linked List.
+    if(!this.head){throw 'this is an empty list';}
+
     let endNode = this.head;
     let length = 1;
 
@@ -60,5 +63,6 @@ class LinkedList {
     return this; 
   }
 }
+
 
 module.exports = LinkedList;

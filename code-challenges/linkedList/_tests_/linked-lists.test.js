@@ -3,7 +3,7 @@
 const LinkedList = require ('../linked-list.js');
 const { exec } = require('child_process');
 
-describe ('linked lists data structure', () => {
+describe ('linked lists data structure insert a value', () => {
 
   it('allows an undefined value', () => {
     let list = new LinkedList();
@@ -11,6 +11,21 @@ describe ('linked lists data structure', () => {
     expect(list.head.value).toEqual(undefined);
   });
 
+  it('adds a value to the node list', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    expect(list.head.value).toEqual('Adam');
+  });
+
+  it('will only care about the first argument', () => {
+    let list = new LinkedList();
+    list.insert('Adam', 'Lena');
+    let result = list.includes('Lena');
+    expect(result).toEqual(false);
+  });
+});
+
+describe ('linked lists data structure searches for nodes in linked list', () => {
   it('returns true is you search for an value that is in the node list', () => {
     let list = new LinkedList();
     list.insert('Adam');
@@ -29,8 +44,17 @@ describe ('linked lists data structure', () => {
     expect(result).toEqual(false);
   });
 
+  it('requires a value', () => {
+    let list = new LinkedList();
+    expect(()=>{list.includes();}).toThrow('you must enter a search value');
+  });
+
+});
+
+describe('linked lists data structure prints a list of nodes', () => {
+
   it('prints the node list', (done) => {
-    exec('node _tests_/output.js', (error, stdout, stderr) => {
+    exec('node _tests_/outputFull.js', (error, stdout, stderr) => {
       if (error) {
         console.error(`exec error: ${error}`);
         return;
@@ -48,17 +72,20 @@ describe ('linked lists data structure', () => {
     });
   });
 
-  it('adds a value to the node list', () => {
-    let list = new LinkedList();
-    list.insert('Adam');
-    expect(list.head.value).toEqual('Adam');
+  it('prints an empty list if there is an error', (done) => {
+    exec('node _tests_/outputFull.js', (error, stdout, stderr) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        return;
+      }
+      expect(stderr).toEqual('');
+      done();
+    });
   });
 
-  it('will only care about the first argument', () => {
+  it('prints an empty list if there are no values', () => {
     let list = new LinkedList();
-    list.insert('Adam', 'Lena');
-    let result = list.includes('Lena');
-    expect(result).toEqual(false);
+    expect(() => {list.print();}).toThrow('this is an empty list');
   });
 
 });
