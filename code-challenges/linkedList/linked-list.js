@@ -61,14 +61,4 @@ class LinkedList {
   }
 }
 
-let list = new LinkedList();
-list.insert('John');
-list.insert('Cathy');
-list.insert('Adam');
-list.insert('Ilya');
-
-console.log(list.includes('Steve'));
-
-list.print();
-
-// At no time should an exception or stack trace be shown to the end user. Catch and handle any such exceptions and return a printed value or operation which cleanly represents the state and either stops execution cleanly, or provides the user with clear direction and output.
+module.exports = LinkedList;
