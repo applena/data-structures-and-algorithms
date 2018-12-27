@@ -62,7 +62,38 @@ class LinkedList {
     console.log(util.inspect(this, {depth: length}));
     return this; 
   }
-}
 
+  insertBefore(value, newValue){
+    //check for edge cases
+    let node = new Node(newValue);
+    let current = this.head;
+
+    while(current.next){
+      if(current.next.value === value){
+        node.next = current.next;
+        current.next = node;
+        return;
+      } else {
+        current = current.next;
+      }
+    }
+    current = current.next;
+  }
+
+  insertAfter(value, newValue){
+    //check for edge cases
+    let node = new Node (newValue);
+    let current = this.head;
+
+    while(current.next){
+      if(current.value === value){
+        node.next = current.next;
+        current.next = node;
+      }
+      current = current.next;
+    }
+    current = current.next;
+  }
+}
 
 module.exports = LinkedList;
