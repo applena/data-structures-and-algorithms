@@ -89,3 +89,25 @@ describe('linked lists data structure prints a list of nodes', () => {
   });
 
 });
+
+describe ('it inserts a node in the middle of the list', () => {
+  it ('inserts a node value before a given node', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    list.insert('Lena');
+    list.insert('Ilya');
+    list.insertBefore('Lena', 'John');
+    let result = list.includes('John');
+    expect(result).toEqual(true);
+  });
+
+  it ('inserts a node value after a given node', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    list.insert('Lena');
+    list.insert('Ilya');
+    list.insertBefore('Lena', 'John');
+    let result = list.includes('John');
+    expect(result).toEqual(true);
+  });
+});
