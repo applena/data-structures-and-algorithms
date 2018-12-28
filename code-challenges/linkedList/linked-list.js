@@ -64,7 +64,10 @@ class LinkedList {
   }
 
   insertBefore(value, newValue){
-    //check for edge cases
+    if(arguments.length !== 2){
+      throw 'you must enter two values';
+    }
+    
     let node = new Node(newValue);
     let current = this.head;
 
@@ -77,10 +80,13 @@ class LinkedList {
         current = current.next;
       }
     }
-    current = current.next;
+    throw 'value not found in link list';
   }
 
   insertAfter(value, newValue){
+    if(arguments.length !== 2){
+      throw 'you must enter two values';
+    }
     //check for edge cases
     let node = new Node (newValue);
     let current = this.head;
@@ -92,7 +98,7 @@ class LinkedList {
       }
       current = current.next;
     }
-    current = current.next;
+    throw 'value not found in link list';
   }
 }
 
