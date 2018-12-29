@@ -100,6 +100,33 @@ class LinkedList {
     }
     throw 'value not found in link list';
   }
+
+  kth_from_end(number){
+    if(typeof number !== 'number'){throw 'please enter a number';}
+    
+    let count = 0;
+    let target;
+     
+    let current = this.head;
+
+    while(current.next){
+      current = current.next;
+      count++;
+    }
+
+    if(number > count){return null;}
+
+    target = count - number;
+    count = 0;
+    current = this.head;
+
+    while(count < target){
+      current = current.next;
+      count++;
+    }
+
+    return current.value;
+  }
 }
 
 module.exports = LinkedList;

@@ -32,3 +32,14 @@ The Big O for this approach is O(n) due to the unknown length of the linked list
 ![](assets/ll_insertions1.jpeg)
 ![](assets/ll_insertions2.jpeg)
 ![](assets/ll_insertions3.jpeg)
+
+# kth from the end of a Linked List
+
+## Challenge
+write a method on your Linked List Class that given a number ruturns the value of the node that is that number from the end of the linked list.
+
+## Approach & Efficiency
+We cycled through the link to calculate the total length. Then we subrtacted the parameter from the total length to get the target node index. Then we cycled through the list again until we hit that target number and returned the value.
+
+## Solution
+![](assets/ll_kth_from_end.jpeg)

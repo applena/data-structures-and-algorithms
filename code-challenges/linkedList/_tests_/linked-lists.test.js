@@ -145,3 +145,30 @@ describe ('it inserts a node in the middle of the list', () => {
     expect(() => {list.insertAfter('Taco', 'TacoAgain');}).toThrow('value not found in link list');
   });
 });
+
+describe('returns the value of a given node from the end', () => {
+  //happy path
+  it('returns the value of a node x value from the end', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    list.insert('Lena');
+    list.insert('Ilya');
+    expect(list.kth_from_end(1)).toEqual('Lena');
+  });
+
+  it('returns null if the number is bigger than the length', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    list.insert('Lena');
+    list.insert('Ilya');
+    expect(list.kth_from_end(4)).toEqual(null);
+  });
+
+  it('requires a number as a parameter', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    list.insert('Lena');
+    list.insert('Ilya');
+    expect(() => {list.kth_from_end('taco');}).toThrow('please enter a number');
+  });
+});
