@@ -91,6 +91,7 @@ describe('linked lists data structure prints a list of nodes', () => {
 });
 
 describe ('it inserts a node in the middle of the list', () => {
+  //happy path insertBefore
   it ('inserts a node value before a given node', () => {
     let list = new LinkedList();
     list.insert('Adam');
@@ -101,6 +102,23 @@ describe ('it inserts a node in the middle of the list', () => {
     expect(result).toEqual(true);
   });
 
+  it('requires two arguments in order to insert', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    list.insert('Lena');
+    list.insert('Ilya');
+    expect(() => {list.insertBefore('Taco');}).toThrow('you must enter two values');
+  });
+
+  it('requires the first value to be present in the list', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    list.insert('Lena');
+    list.insert('Ilya');
+    expect(() => {list.insertBefore('Taco', 'TacoAgain');}).toThrow('value not found in link list');
+  });
+
+  //happy path insertAfter
   it ('inserts a node value after a given node', () => {
     let list = new LinkedList();
     list.insert('Adam');
@@ -109,5 +127,48 @@ describe ('it inserts a node in the middle of the list', () => {
     list.insertBefore('Lena', 'John');
     let result = list.includes('John');
     expect(result).toEqual(true);
+  });
+
+  it('requires two arguments in order to insert', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    list.insert('Lena');
+    list.insert('Ilya');
+    expect(() => {list.insertAfter('Taco');}).toThrow('you must enter two values');
+  });
+
+  it('requires the first value to be present in the list', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    list.insert('Lena');
+    list.insert('Ilya');
+    expect(() => {list.insertAfter('Taco', 'TacoAgain');}).toThrow('value not found in link list');
+  });
+});
+
+describe('returns the value of a given node from the end', () => {
+  //happy path
+  it('returns the value of a node x value from the end', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    list.insert('Lena');
+    list.insert('Ilya');
+    expect(list.kth_from_end(1)).toEqual('Lena');
+  });
+
+  it('returns null if the number is bigger than the length', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    list.insert('Lena');
+    list.insert('Ilya');
+    expect(list.kth_from_end(4)).toEqual(null);
+  });
+
+  it('requires a number as a parameter', () => {
+    let list = new LinkedList();
+    list.insert('Adam');
+    list.insert('Lena');
+    list.insert('Ilya');
+    expect(() => {list.kth_from_end('taco');}).toThrow('please enter a number');
   });
 });
