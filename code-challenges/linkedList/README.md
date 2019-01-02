@@ -43,3 +43,14 @@ We cycled through the link to calculate the total length. Then we subrtacted the
 
 ## Solution
 ![](assets/ll_kth_from_end.jpeg)
+
+# Merging Two Linked List like a zipper
+
+## Challenge
+write a function that takes in two linked list and merges them together by alternativly linking the nodes.
+
+## Approach & Efficiency
+We cycled through the list assiging the currrent list 2 next to the current list 1 next and the current list 1 next to the current list two. Then we assigned currently ist 1 to current list 2 next and current list 2 to the original current list 2 next (stored in a temp variable). This result would have an O(n) efficienciy since we don't know the length of the lists, but we are only cycling through once.
+
+## Solution
+![](assets/ll_merged.jpg)

@@ -172,3 +172,45 @@ describe('returns the value of a given node from the end', () => {
     expect(() => {list.kth_from_end('taco');}).toThrow('please enter a number');
   });
 });
+
+describe('it combines two linked lists', () => {
+  let mergedList = require('../ll_merge/ll-merge');
+
+  it('requires two linked list as parameters', () => {
+    let firstList = new LinkedList();
+    firstList.insert('Adam');
+    firstList.insert('Lena');
+    firstList.insert('Ilya');
+    expect(() => {mergedList(firstList);}).toThrow('you must enter two lists');
+  });
+
+  it('returns the head node', () => {
+    let firstList = new LinkedList();
+    let secondList = new LinkedList();
+    firstList.insert('Adam');
+    firstList.insert('Lena');
+    firstList.insert('Ilya');
+    secondList.insert('A');
+    secondList.insert('B');
+    secondList.insert('C');
+    secondList.insert('D');
+    secondList.insert('E');
+    let result = mergedList(firstList, secondList);
+    expect(result.head.value).toEqual(firstList.head.value);
+  });
+
+  it('zips the two lists together', () => {
+    let firstList = new LinkedList();
+    let secondList = new LinkedList();
+    firstList.insert('Adam');
+    firstList.insert('Lena');
+    firstList.insert('Ilya');
+    secondList.insert('A');
+    secondList.insert('B');
+    secondList.insert('C');
+    secondList.insert('D');
+    secondList.insert('E');
+    let result = mergedList(firstList, secondList);
+    expect(result).toEqual();
+  });
+});
