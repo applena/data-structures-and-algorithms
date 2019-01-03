@@ -211,6 +211,6 @@ describe('it combines two linked lists', () => {
     secondList.insert('D');
     secondList.insert('E');
     let result = mergedList(firstList, secondList);
-    expect(result).toEqual();
+    expect(result).toMatchObject({'head': {'next': {'next': {'next': {'next': {'next': {'next': {'next': {'next': null, 'value': 'E'}, 'value': 'D'}, 'value': 'C'}, 'value': 'Ilya'}, 'value': 'B'}, 'value': 'Lena'}, 'value': 'A'}, 'value': 'Adam'}});
   });
 });
