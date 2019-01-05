@@ -22,7 +22,8 @@ class Queue {
   }
 
   dequeue(){
-    let temp = this.top;
+    if(this.size === 0){throw 'empty queue';}
+    let temp = this.front;
     this.front = this.front.next;
     temp.next = null;
     this.size--;
@@ -30,6 +31,7 @@ class Queue {
   }
 
   peek(){
+    if(this.size === 0){throw 'empty queque';}
     return this.front;
   }
 }

@@ -15,7 +15,7 @@ describe('stack', () => {
       expect(stack.peek()).toBeNull();
     });
 
-    it('returns the last item', () => {
+    it('returns the top item', () => {
       let stack = new Stack();
       stack.push(1);
       stack.push(2);
@@ -90,7 +90,7 @@ describe('Queue', () => {
   describe('enqueue()', () => {
     it('returns null if there is not at least one value', ()=> {
       let queue = new Queue();
-      expect(queue.enqueue().value).toThrow('you must enter a vaule');
+      expect(()=> {queue.enqueue();}).toThrow('you must enter a vaule');
     });
 
     it('increses the size of the Queue by one', ()=> {
@@ -110,32 +110,49 @@ describe('Queue', () => {
   });
 
   describe('dequeue()', () => {
-    it('the head will cange to the second', ()=> {
-
+    it('returns null if the queque is empty', ()=> {
+      let queue = new Queue();
+      expect(() => {queue.dequeue();}).toThrow('empty queue');
     });
 
-    it('', ()=> {
-
+    it('the size of the queue will decrease by one', ()=> {
+      let queue = new Queue();
+      queue.enqueue('Adam');
+      queue.enqueue('Ilya');
+      queue.dequeue();
+      expect(queue.size).toEqual(1);
     });
 
     //happy path
     it('removes a node from the front/top of the Queue', ()=> {
-
+      let queue = new Queue();
+      queue.enqueue('Adam');
+      queue.enqueue('Ilya');
+      queue.dequeue();
+      expect(queue.peek().value).toEqual('Ilya');
     });
   });
 
-  describe('enqueue()', () => {
-    it('returns null if there is not at least one value', ()=> {
-
+  describe('peek()', () => {
+    it('returns null on an empty stack', ()=> {
+      let queue = new Queue();
+      expect(() => queue.peek()).toThrow('empty queque');
     });
 
-    it('', ()=> {
-
+    it('does not alter the queue', ()=> {
+      let queue = new Queue();
+      queue.enqueue('Adam');
+      queue.enqueue('Ilya');
+      queue.peek();
+      expect(queue.size).toEqual(2);
     });
 
     //happy path
-    it('adds a node to the end of a Queue', ()=> {
-
+    it('returns the front node of the queue', ()=> {
+      let queue = new Queue();
+      queue.enqueue('Adam');
+      queue.enqueue('Ilya');
+      expect(queue.peek().value).toEqual('Adam');
     });
   });
 });
