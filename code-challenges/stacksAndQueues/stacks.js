@@ -4,7 +4,6 @@ const Node = require('./node');
 
 class Stack {
   constructor(){
-    this.stack = new Node();
     this.top = null;
     this.size = 0;
     this.next = null;
