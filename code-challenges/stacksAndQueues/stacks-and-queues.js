@@ -38,28 +38,35 @@ class Stack {
 
 class Queue {
   constructor(){
-    this.top = null;
-    this.rear.next = null;
+    this.front = null;
+    this.rear = null;
     this.size = 0;
   }
 
   enqueue(value){
+    if(!value){throw 'you must enter a vaule';}
     let node = new Node(value);
     if(this.rear){
       this.rear.next = node;
+    } else {
+      this.front = node;
+      this.rear = node;
     }
-    this.rear = node;
+    this.size++;
   }
 
   dequeue(){
-    let temp = this.top;
-    this.top = this.top.next;
+    if(this.size === 0){throw 'empty queue';}
+    let temp = this.front;
+    this.front = this.front.next;
     temp.next = null;
+    this.size--;
     return temp;
   }
 
   peek(){
-    return this.top;
+    if(this.size === 0){throw 'empty queque';}
+    return this.front;
   }
 }
 

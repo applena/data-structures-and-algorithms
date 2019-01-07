@@ -156,3 +156,39 @@ describe('Queue', () => {
     });
   });
 });
+
+const PseudoQueue = require('../queueWithStacks/queue-with-stacks');
+
+describe('PseudoQueue', () => {
+  describe('enqueue', () => {
+    it('requires two arguments', () => {
+      let pseudoQ = new PseudoQueue();
+      expect(() => {pseudoQ.enqueue('howdy');}).toThrow('you must enter two Stacks as arguments');
+    });
+
+    it('', () => {
+
+    });
+
+    it('adds two stacks to the pseudo Q and sets the first stack to be the head', () => {
+      let pseudoQ = new PseudoQueue();
+      let result = pseudoQ.enqueue('Adam', 'Ilya');
+      expect(result.top.value).toEqual('Adam');
+    });
+  });
+
+  describe('dequeue', () => {
+    it('requires two arguments', () => {
+      let pseudoQ = new PseudoQueue();
+      expect(() => {pseudoQ.enqueue('howdy');}).toThrow('you must enter two Stacks as arguments');
+    });
+
+    it('', () => {
+
+    });
+
+    it('', () => {
+
+    });
+  });
+});
