@@ -5,31 +5,35 @@ const Stack = require('../stacks');
 class PseudoQueue {
 
   constructor(){
-    this.top = null;
-    this.next = null;
+    this.bottom = null;
+    this.stack = new Stack();
   }
 
-  enqueue(stack1, stack2){
-    if(arguments.length !== 2){throw 'you must enter two Stacks as arguments';}
-    let previous;
-    let stack = new Stack();
-
-    stack.push(stack1);
+  enqueue(value){
+    if(arguments.length !== 1){throw 'you must enter a value as arguments';}
     
-    this.top = previous;
+    this.stack.push(value);
+    if(!this.bottom) {
+      this.bottom = this.stack.top;
+    }else{
+      this.bottom.previous = this.stack.top;
+    }
 
-    stack.push(stack2);
-
-    top.next = previous;
-    previous = top;
   }
 
-  dequeue(stack1, stack2){
-    if(arguments.length !== 2){throw 'you must enter two Stacks as arguments';}
-    let stack = new Stack();
-    stack.push(stack1);
-    stack.push(stack2);
-    stack.pop();
+  dequeue(){
+    if(arguments.length){throw 'this does not take an argument';}
+    if(!this.bottom){throw 'this is an empty pseudoQ';}
+    // it won't have a previous if this is a stack of 1 item
+    if(this.bottom.previous){
+      this.bottom.previous.next = null; // delete knowledge of bottom from stack
+    }
+
+    let temp = this.bottom.value;
+    // move the bottom reference to the new last item in the stack
+    this.bottom = this.bottom.previous;
+
+    return temp;
   }
 }
 
