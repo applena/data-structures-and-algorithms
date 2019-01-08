@@ -161,34 +161,41 @@ const PseudoQueue = require('../queueWithStacks/queue-with-stacks');
 
 describe('PseudoQueue', () => {
   describe('enqueue', () => {
-    it('requires two arguments', () => {
+    it('requires one argument', () => {
       let pseudoQ = new PseudoQueue();
-      expect(() => {pseudoQ.enqueue('howdy');}).toThrow('you must enter two Stacks as arguments');
+      expect(() => {pseudoQ.enqueue();}).toThrow('you must enter a value as arguments');
     });
 
-    it('', () => {
-
+    it('it throws an error if you enter two arguments', () => {
+      let pseudoQ = new PseudoQueue();
+      expect(() => {pseudoQ.enqueue('Adam', 'Ilya');}).toThrow('you must enter a value as arguments');
     });
 
-    it('adds two stacks to the pseudo Q and sets the first stack to be the head', () => {
+    it('adds a value to the pseudo Q in the back of the Q', () => {
       let pseudoQ = new PseudoQueue();
-      let result = pseudoQ.enqueue('Adam', 'Ilya');
-      expect(result.top.value).toEqual('Adam');
+      pseudoQ.enqueue('Adam');
+      pseudoQ.enqueue('Ilya');
+      expect(pseudoQ.stack.top.value).toEqual('Ilya');
     });
   });
 
   describe('dequeue', () => {
-    it('requires two arguments', () => {
+    it('throw an error if you enter an argument', () => {
       let pseudoQ = new PseudoQueue();
-      expect(() => {pseudoQ.enqueue('howdy');}).toThrow('you must enter two Stacks as arguments');
+      expect(() => {pseudoQ.dequeue('Adam', 'Ilya');}).toThrow('this does not take an argument');
     });
 
-    it('', () => {
-
+    it('throws an error if you try to dequeue from an empty pseudoQ', () => {
+      let pseudoQ = new PseudoQueue();
+      expect(() => {pseudoQ.dequeue();}).toThrow('this is an empty pseudoQ');
     });
 
-    it('', () => {
-
+    it('returns the front item in the pseudoQ', () => {
+      let pseudoQ = new PseudoQueue();
+      pseudoQ.enqueue('Adam');
+      pseudoQ.enqueue('Ilya');
+      let result = pseudoQ.dequeue();
+      expect(result).toEqual('Adam');
     });
   });
 });
