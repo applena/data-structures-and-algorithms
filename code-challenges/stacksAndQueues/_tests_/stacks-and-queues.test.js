@@ -175,7 +175,7 @@ describe('PseudoQueue', () => {
       let pseudoQ = new PseudoQueue();
       pseudoQ.enqueue('Adam');
       pseudoQ.enqueue('Ilya');
-      expect(pseudoQ.stack.top.value).toEqual('Ilya');
+      expect(pseudoQ.peek()).toEqual('Ilya');
     });
   });
 
@@ -187,7 +187,7 @@ describe('PseudoQueue', () => {
 
     it('throws an error if you try to dequeue from an empty pseudoQ', () => {
       let pseudoQ = new PseudoQueue();
-      expect(() => {pseudoQ.dequeue();}).toThrow('this is an empty pseudoQ');
+      expect(() => {pseudoQ.dequeue();}).toThrow('this is an empty Q');
     });
 
     it('returns the front item in the pseudoQ', () => {
@@ -195,7 +195,7 @@ describe('PseudoQueue', () => {
       pseudoQ.enqueue('Adam');
       pseudoQ.enqueue('Ilya');
       let result = pseudoQ.dequeue();
-      expect(result).toEqual('Adam');
+      expect(result).toEqual('Ilya');
     });
   });
 });
