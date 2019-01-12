@@ -12,7 +12,7 @@ describe('multi bracket validation', () => {
   });
 
   it('returns true if the brackets are balanced', () => {
-    let result = bracket('[lk({}])');
+    let result = bracket('()(){}{}([[]])');
     expect(result).toEqual(true);
   });
 
