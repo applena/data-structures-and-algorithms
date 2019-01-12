@@ -36,11 +36,22 @@ class BinarySearchTree {
         this.root = newNode;
         return;
       }
-      if(!node.left){
-        node.left = newNode;
-        return;
+
+      if(newNode.value > node.value){
+        if(!node.right){
+          node.right = newNode;
+          return;
+        } 
+        _walk(node.right);
       }
-      _walk(node.left);
+
+      if(newNode.value < node.value){
+        if(!node.left){
+          node.left = newNode;
+          return;
+        } 
+        _walk(node.left);
+      }
     };
     _walk(this.root);
   }
@@ -51,14 +62,19 @@ class BinarySearchTree {
     let truth = false;
 
     let _walk = (node) => {
+      if(value === node.value){ 
+        truth = true;
+        return; 
+      }
 
-      if(node.left){ 
-        if(node.left.value === value){ truth = true; }
-        _walk(node.left);}
+      if(node.left && value < node.value){
+        _walk(node.left);
+      }
 
-      if(node.right){ 
-        if(node.right.value === value){ truth = true; }
-        _walk(node.right);}
+      if(node.right && value > node.value){
+        _walk(node.right);
+      }
+
     };
 
     _walk(this.root);
