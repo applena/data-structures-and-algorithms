@@ -19,23 +19,20 @@ describe('binary search tree', () => {
 
     it('adds a value to the first available left child that is null', () => {
       let tree = new BinarySearchTree();
-      let a = new Node('a');
-      let b = new Node('b');
-      let c = new Node('c');
-      let d = new Node('d');
-      let e = new Node('e');
-      let f = new Node('f');
 
-      a.left = b;
-      a.right = c;
-      c.left = f;
-      b.left = d;
-      b.right = e;
-      tree.root = a;
+      tree.add(100);
+      tree.add(50);
+      tree.add(200);
+      tree.add(25);
+      tree.add(75);
+      tree.add(150);
+      tree.add(300);
+      tree.add(60);
+      tree.add(90);
+      tree.add(342);
 
-      tree.add(4);
       let treeArray = tree.preOrder();
-      expect(treeArray).toEqual(['a', 'b', 'd', 4, 'e', 'c', 'f']);
+      expect(treeArray).toEqual([100, 50, 25, 75, 60, 90, 200, 150, 300, 342]);
 
     });
   });
@@ -48,19 +45,17 @@ describe('binary search tree', () => {
 
     it('returns false if the value does not exist in the tree', () => {
       let tree = new BinarySearchTree();
-      let a = new Node('a');
-      let b = new Node('b');
-      let c = new Node('c');
-      let d = new Node('d');
-      let e = new Node('e');
-      let f = new Node('f');
 
-      a.left = b;
-      a.right = c;
-      c.left = f;
-      b.left = d;
-      b.right = e;
-      tree.root = a;
+      tree.add(100);
+      tree.add(50);
+      tree.add(200);
+      tree.add(25);
+      tree.add(75);
+      tree.add(150);
+      tree.add(300);
+      tree.add(60);
+      tree.add(90);
+      tree.add(342);
 
       expect(tree.contains(4)).toBe(false);
 
@@ -68,21 +63,19 @@ describe('binary search tree', () => {
 
     it('returns true if the value exists in the tree', () => {
       let tree = new BinarySearchTree();
-      let a = new Node('a');
-      let b = new Node('b');
-      let c = new Node('c');
-      let d = new Node('d');
-      let e = new Node('e');
-      let f = new Node('f');
 
-      a.left = b;
-      a.right = c;
-      c.left = f;
-      b.left = d;
-      b.right = e;
-      tree.root = a;
+      tree.add(100);
+      tree.add(50);
+      tree.add(200);
+      tree.add(25);
+      tree.add(75);
+      tree.add(150);
+      tree.add(300);
+      tree.add(60);
+      tree.add(90);
+      tree.add(342);
 
-      expect(tree.contains('f')).toBe(true);
+      expect(tree.contains(50)).toBe(true);
 
     });
   });
