@@ -22,3 +22,9 @@ inOrder() - moves through the tree from bottom to top and returns an array of th
 postOrder() - moves through the tree from right to left reutrning an array of the path it took
 add() - takes a value and adds it to the appropriate place in the binary tree
 contains() - takes a value and returns true or false depending on if the value is in the tree
+breadthFirst() - traverses a binary tree horizontially by creating a queueing system
+findMaximumValue() - traverses a binary tree comparing the values of each node. It returns the largest value.
+
+## solutions
+![](assets/breadth-first.jpg)
+![](assets/find-maximum-value-binary-tree.jpg)
