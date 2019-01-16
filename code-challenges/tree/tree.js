@@ -71,31 +71,48 @@ class BinaryTree {
         breadth.enqueue(breadth.front.right);
       }
 
-      console.log('deque ', breadth.front.value);
       breadth.dequeue(breadth.front);
     }
 
     return nodes;
   }
 
+  findMaximumValue(){
+    if(!this.root){ return null; }
+    if(typeof this.root.value !== 'number'){ return null;}
+    let temp=this.root.value;
+    let _walk = (node) => {
+      if(node.value > temp){
+        temp = node.value;
+      }
+
+      if(node.left){_walk(node.left);}
+      if(node.right){_walk(node.right);}
+
+    };
+    _walk(this.root);
+    return temp;
+  }
+
 }
 
-// let Node = require('./Node');
-// let tree = new BinaryTree();
-// let a = new Node('a');
-// let b = new Node('b');
-// let c = new Node('c');
-// let d = new Node('d');
-// let e = new Node('e');
-// let f = new Node('f');
+let Node = require('./Node');
+let tree = new BinaryTree();
+let a = new Node(4);
+let b = new Node(5);
+let c = new Node(23);
+let d = new Node(2);
+let e = new Node(6);
+let f = new Node(9);
 
-// a.left = b;
-// a.right = c;
-// c.left = f;
-// b.left = d;
-// b.right = e;
-// tree.root = a;
+a.left = b;
+a.right = c;
+c.left = f;
+b.left = d;
+b.right = e;
+tree.root = a;
 
+console.log(tree.findMaximumValue());
 module.exports = BinaryTree;
 
 //node: node
@@ -108,3 +125,5 @@ module.exports = BinaryTree;
 //depth: # of edges from node to edges
 //balanced: if # of edges on one side are within one of the # of edges on the other side
 //complete tree: every node has exactly two children
+
+// Write a function called find-maximum-value which takes binary tree as its only input. Without utilizing any of the built-in methods available to your language, return the maximum value stored in the tree. You can assume that the values stored in the Binary Tree will be numeric.
