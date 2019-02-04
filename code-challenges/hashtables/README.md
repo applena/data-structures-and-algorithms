@@ -26,3 +26,15 @@ The challenge was to write a class called HashMap that takes in a number to dert
 * add(key, value): adds a key/value pair to a hashtable as a linked list
 * find(key): returns the value of a key if it exists in the hashtable
 * contains(key): return true if a key exits in a a hashtable and false if it doesn't
+
+# First repeated word
+* Finds the first repeated word in a string
+
+## Challenge
+* The challenge was to write a function that takes in a long string and returns the first repeated word in that string. 
+
+## Approach & Efficiency
+* I approached this problem using a Hashtable to reduce my big O. I thought about pushing the words into an array and looping through that array to see if the word existed, but realized that that would be an enormous big O. So, I created a Hashtable. First I check to see if the key exists in my HashTable. If it does, I return that word otherwise I add the key to the table. 
+
+## Solution
+![](./assets/repeated_word.jpg)
