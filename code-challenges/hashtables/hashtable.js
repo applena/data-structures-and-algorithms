@@ -61,7 +61,6 @@ module.exports = class HashMap{
   contains(key){
     if(!key){throw 'please enter a key';}
     let index = this.getHash(key);
-    
     let list = this.map[index];
 
     if(!list){
@@ -71,7 +70,7 @@ module.exports = class HashMap{
     let current = list.head;
 
     while(current){
-      if(current.value[key]){
+      if(current.value.hasOwnProperty(key)){
         return true;
       }
       current = current.next;
