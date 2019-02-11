@@ -1,5 +1,3 @@
-// Extend your graph object with a breadth-first traversal method that accepts a starting node. Without utilizing any of the built-in methods available to your language, return a collection of nodes in the order they were visited. Display the collection.
-
 'use strict';
 
 const Queue = require('../Queue');
@@ -67,27 +65,38 @@ class Graph{
   }
 
   breadthFristTraversal(startingNode){
+    if(!startingNode){return null;}
     let order = [];
     let myQ = new Queue();
     myQ.enqueue(startingNode);
+    //console.log('front!', myQ.dequeue());
     
-    while (myQ.peek()){
-      let front = myQ.Dequeue();
-      order.push(front.value);
-      let neighbors = this.GetNeighbors(front);
-
+    while (myQ.size){
+      console.log('size',myQ.size)
+      let front = myQ.peek();
+      if(front.visited){
+        console.log('front visited', front.node)
+        return;
+      }
+      console.log('front', front);
+      //console.log('order', order)
+      let neighbors = this.GetNeighbors(front.value);
+      console.log('neigbhors', JSON.stringify(neighbors, null, 2));
+      
+      front.visited = true;
       neighbors.forEach(child => {
         if(!child || child.visited){
+          console.log('visited', child);
           return;
         }
         
         child.visited = true;
-        myQ.enqueue(child);
+        myQ.enqueue(child.node);
+        console.log('myQ', JSON.stringify(myQ, null, 2));
       })
-
-      return order;
-
+      order.push(myQ.dequeue().value);
     }
+    return order;
   }
 }
 
@@ -105,3 +114,4 @@ myGraph.AddEdge(c, d);
 myGraph.AddEdge(d, a);
 
 console.log(myGraph.breadthFristTraversal(a));
+//console.log(myGraph.GetNeighbors(a));
