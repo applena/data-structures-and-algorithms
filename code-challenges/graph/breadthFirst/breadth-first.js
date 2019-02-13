@@ -70,32 +70,58 @@ class Graph{
     let myQ = new Queue();
     myQ.enqueue(startingNode);
     //console.log('front!', myQ.dequeue());
+    startingNode.visited = true;
     
     while (myQ.size){
-      console.log('size',myQ.size)
       let front = myQ.peek();
       if(front.visited){
-        console.log('front visited', front.node)
         return;
       }
-      console.log('front', front);
-      //console.log('order', order)
       let neighbors = this.GetNeighbors(front.value);
-      console.log('neigbhors', JSON.stringify(neighbors, null, 2));
+      //console.log('neigbhors', JSON.stringify(neighbors, null, 2));
       
-      front.visited = true;
       neighbors.forEach(child => {
-        if(!child || child.visited){
-          console.log('visited', child);
+        if(!child || child.node.visited){
           return;
         }
         
         child.visited = true;
         myQ.enqueue(child.node);
-        console.log('myQ', JSON.stringify(myQ, null, 2));
+        //console.log('myQ', JSON.stringify(myQ, null, 2));
       })
       order.push(myQ.dequeue().value);
     }
+    return order;
+  }
+
+  depthFristTraversal(startingNode){
+    if(!startingNode){return null;}
+
+    let order = [];
+    order.push(startingNode.value);
+
+    let graph = this;
+
+    function _traverseChildren(node){
+      node.visited = true;
+      let neighbors = graph.GetNeighbors(node);
+      console.log('neighbors', neighbors);
+  
+      neighbors.forEach(child => {
+        if(!child || child.node.visited){
+          return;
+        }
+        
+        child.visited = true;
+        order.push(child.node.value);
+        _traverseChildren(child.node);
+      })
+
+    }
+
+    _traverseChildren(startingNode);
+    
+
     return order;
   }
 }
@@ -107,11 +133,15 @@ let a = myGraph.AddNode('a');
 let b = myGraph.AddNode('b');
 let c = myGraph.AddNode('c');
 let d = myGraph.AddNode('d');
+let e = myGraph.AddNode('e');
+let f = myGraph.AddNode('f');
 
 myGraph.AddEdge(a, b);
 myGraph.AddEdge(b,c);
 myGraph.AddEdge(c, d);
 myGraph.AddEdge(d, a);
+myGraph.AddEdge(a, e);
+myGraph.AddEdge(e, f);
 
 console.log(myGraph.breadthFristTraversal(a));
 //console.log(myGraph.GetNeighbors(a));
