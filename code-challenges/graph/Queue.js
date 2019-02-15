@@ -14,6 +14,7 @@ class Queue {
     let node = new Node(value);
     if(this.rear){
       this.rear.next = node;
+      this.rear = node;
     } else {
       this.front = node;
       this.rear = node;

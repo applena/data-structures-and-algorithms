@@ -108,7 +108,7 @@ class Graph{
       console.log('neighbors', neighbors);
   
       neighbors.forEach(child => {
-        if(!child || child.node.visited){
+        if(!child || child.visited){
           return;
         }
         
