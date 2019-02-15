@@ -54,7 +54,7 @@ describe('graph', () => {
       let myGraph = new Graph();
       let a = myGraph.AddNode('a');
       let b = myGraph.AddNode('b');
-      expect(myGraph.GetNodes()[0].value[0].value).toEqual('a');
+      expect(myGraph.GetNodes()[0][0].value).toEqual('a');
     });
 
   });
@@ -90,7 +90,7 @@ describe('graph', () => {
       let myGraph = new Graph();
       let a = myGraph.AddNode('a');
       myGraph.AddEdge(a, a);
-      expect(myGraph.GetNodes()[0].value[0].value).toEqual('a');
+      expect(myGraph.GetNodes()[0][0].value).toEqual('a');
     });
 
     it('an empty graph returns null', ()=> {
