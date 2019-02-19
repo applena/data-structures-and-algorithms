@@ -4,11 +4,11 @@ const quickSort = require('../quick-sort');
 
 describe('quickSort', () => {
   it('requires an array', () => {
-    expect(quickSort()).toEqual(null);
+    expect(quickSort()).toEqual([]);
   });
 
-  it('returns null if the array is empty', () => {
-    expect(quickSort([])).toEqual(null);
+  it('returns an empty array if the array is empty', () => {
+    expect(quickSort([])).toEqual([]);
   });
 
   it('returns an sorted array', () => {

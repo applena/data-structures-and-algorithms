@@ -1,15 +1,14 @@
 'use strict';
 
 function quickSort(arr){
-  if(!arr){ return null };
-  if(!arr.length){ return null };
-  if(arr.length < 2){ return arr };
+  if(!arr){ return []; }
+  if(arr.length < 2){ return arr; }
 
   let pivot = arr[0];
   let lesser = [];
   let greater = [];
 
-  for(let i in arr){
+  for(let i = 0; i<arr.length; i++){
     if(arr[i] < pivot){
       lesser.push(arr[i]);
     }
@@ -18,7 +17,9 @@ function quickSort(arr){
     }
   }
 
-  return quickSort(lesser).concat(quickSort(pivot, quickSort(greater)));
+  return quickSort(lesser).concat(pivot, quickSort(greater));
 }
+
+console.log(quickSort([2,5,1,6]));
 
 module.exports = quickSort;
