@@ -1,0 +1,16 @@
+{
+  "name": "sort",
+  "version": "1.0.0",
+  "description": "",
+  "main": "quick-sort.js",
+  "scripts": {
+    "test": "jest --verbose --coverage",
+    "test-watch": "jest --watchAll --verbose --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "24.1.0"
+  }
+}
