@@ -17,10 +17,10 @@ module.exports = function binarySearch(arr=[], key=0){
   let topMiddle = function(start, end){
     midIdx = midIdx+Math.floor((end - start)/2);
   };
+
   let start = 0;
   let end = arr.length;
   while(key !== arr[midIdx]){
-    console.log(key, midIdx, arr[midIdx]);
     if(midIdx===0 || midIdx===arr.length-1){
       return -1;
     } else if (key < arr[midIdx]){
