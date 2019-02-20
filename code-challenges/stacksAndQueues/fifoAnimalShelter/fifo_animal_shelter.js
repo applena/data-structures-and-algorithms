@@ -3,7 +3,6 @@
 class Animal {
   constructor (animal){
     if(animal === 'dog' || animal ==='cat'){
-      console.log('in the else - happy path!!!!!! ', animal);
       this.next = null;
       this.animal = animal;
     
@@ -28,7 +27,6 @@ class AnimalShelter {
     if(!this.front && !this.rear){
       this.front = newAnimal;
       this.rear = newAnimal;
-      console.log('dog should be ', this.front, this.rear);
     }
 
     this.rear.next = newAnimal;
