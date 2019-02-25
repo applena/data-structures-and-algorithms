@@ -1,0 +1,14 @@
+{
+  "name": "radixsort",
+  "version": "1.0.0",
+  "description": "",
+  "main": "radix-sort.js",
+  "scripts": {
+    "test": "jest --coverage --verbose"
+  },
+  "author": "lena eivy",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "24.1.0"
+  }
+}
