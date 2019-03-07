@@ -1,6 +1,6 @@
 'use strict';
 
-const integerPalindrome = require('../integerPalindrome');
+const integerPalindrome = require('../isIntPalandrome/integerPalindrome');
 
 describe('integerPalindrome', () => {
   it('requres an int as a paramete', () => {
