@@ -13,7 +13,6 @@
 
 function twoSums(arr, target){
   for(let i = 0; i < arr.length; i++){
-    if(typeof arr[i] !== 'number'){ return null; }
     for(let j = i+1; j < arr.length; j++){
       if(typeof arr[i] !== 'number'){ return null; }
       if(arr[i] + arr[j] === target){
