@@ -17,10 +17,13 @@ function strStr(haystack, needle){
   for(let i = 0; i<haystack.length; i++){
     if( haystack[i] === needle[0]){
       while(count<=needle.length){
-        count++;
         if(needle[count] !== haystack[i+count]){
           break;
         }
+        if(!haystack[i+count] && needle[count]){
+          return -1;
+        }
+        count++;
       }
       return i;
     }
@@ -28,6 +31,8 @@ function strStr(haystack, needle){
   return -1;
 }
 
+
 console.log(strStr('hello', 'll'));
 console.log(strStr('aaaaa', 'bba'));
 console.log(strStr('bababa', ''));
+console.log(strStr('a', 'a'));
