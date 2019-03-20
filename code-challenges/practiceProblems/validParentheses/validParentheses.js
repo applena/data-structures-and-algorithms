@@ -64,26 +64,58 @@ class Stack {
 }
 
 function isValidParentheses(s){
+  let myStack = new Stack();
+
   let round = 0;
   let square = 0;
   let curly = 0;
 
-  let myStack = new Stack();
-
   for(let i = 0; i < s.length; i++){
     
-    if(s[i] === '('){ round++; }
-    if(s[i] === '['){ square++; }
-    if(s[i] === '{'){ curly++; }
-    
-    if(s[i] === ')'){ round--; }
-    if(s[i] === ']'){ square--; }
-    if(s[i] === '}'){ curly--; }
-    
-    if(round < 0 || square < 0 || curly < 0){
-      console.log('in the false conditional');
-      return false;
+    if(s[i] === '('){ 
+      round++; 
+      myStack.push(s[i]);
     }
+    if(s[i] === '['){ 
+      square++;
+      myStack.push(s[i]); 
+    }
+    if(s[i] === '{'){ 
+      curly++; 
+      myStack.push(s[i]);
+    }
+    
+    if(s[i] === ')'){ 
+      round--; 
+      if(myStack.peek().value !== '('){
+        return false;
+      } else {
+        myStack.pop();
+      }
+    }
+    if(s[i] === ']'){ 
+      square--; 
+      if(myStack.peek().value !== '['){
+        return false;
+      } else {
+        myStack.pop();
+      }
+    }
+    if(s[i] === '}'){ 
+      curly--; 
+      if(myStack.peek().value !== '{'){
+        return false;
+      } else {
+        myStack.pop();
+      }
+    }
+
+  }
+
+
+  if(round < 0 || square < 0 || curly < 0){
+    console.log('in the false conditional');
+    return false;
   }
 
   return true;
