@@ -1,7 +1,9 @@
 function calc(str){
+  // remove white space
   str = str.replace(/\s+/g, '');
+
   str = str.replace(/(\d)\(/g, '$1*(');
-  console.log('calc', str);
+  
   //find the first thing we want to act on ()
   //regex search the string for a () set
   let parenMatches = str.match(/\([^\)\(]*\)/g);
