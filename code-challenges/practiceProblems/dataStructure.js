@@ -30,16 +30,35 @@ function convertJSON(str){
     }
 
     let fullName = nameStr.replace(/,/g, ' ');
-    console.log(fullName);
+    // console.log(fullName);
 
     const namesArr = Object.values(parsing);
     
     namesArr[0].forEach(name => {
-      console.log('name: '+name);
+      // console.log('name: '+name);
     });
   } catch(error) {
     console.error(error);
   }
 }
 
-convertJSON('{"names":["edgar", "allen", "poe"]}');
+function strToArray(str){
+  let newArr = [];
+  let result = str.replace(/[\[\],]/g, '');
+  console.log(result);
+
+  for(let i = 0; i<result.length; i++){
+    newArr.push(Number(result[i]));
+  }
+
+  return newArr;
+}
+
+console.log(strToArray('[1,2,3,4,5]'));
+
+// convertJSON('{"names":["edgar", "allen", "poe"]}');
+
+// - '[1,2,3,4,5]'
+// - 'name_lena:name_adam:name_ilya'
+// - '[1, 2],[3,4], [5,6] ,[7,8]'
+
