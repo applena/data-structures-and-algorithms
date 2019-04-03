@@ -5,7 +5,16 @@
 
 function checkPermutation(str1, str2){
   let str1Arr = str1.split('');
-  console.log(str1Arr);
+  for(let i = 0; i < str2.length; i++){
+    if(str1Arr.includes(str2[i])){
+      let newArr = [];
+      str1Arr.filter(letter => {
+        if(str2[i] !== letter){
+          newArr.push(letter);
+        }
+      });
+    }
+  }
 }
 
 checkPermutation('hello', 'hi');
