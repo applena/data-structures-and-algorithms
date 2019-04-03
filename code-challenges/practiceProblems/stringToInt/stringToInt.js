@@ -71,10 +71,13 @@ function atoi(str){
   let final = positive+result.join('');
 
   if(!final.length){ return 0; }
+  if( final === '+' || final === '-'){ return 0; }
+  if( final <= -2147483648 ){ return -2147483648; }
+
   return final;
 }
 
-console.log(atoi('42'));
+console.log(atoi('+'));
 console.log(atoi('    -42'));
 console.log(atoi('4193 with words'));
 console.log(atoi('words and 987'));
