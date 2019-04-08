@@ -15,7 +15,7 @@ function strStr(haystack, needle){
   if(needle === ''){ return 0; }
   let count = 0;
   for(let i = 0; i<haystack.length; i++){
-    if(haystack.length >= needle){
+    if(haystack.length >= needle.length){
       if( haystack[i] === needle[0]){
         while(count<=needle.length){
           if(needle[count] !== haystack[i+count]){
