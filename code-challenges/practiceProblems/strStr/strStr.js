@@ -15,17 +15,19 @@ function strStr(haystack, needle){
   if(needle === ''){ return 0; }
   let count = 0;
   for(let i = 0; i<haystack.length; i++){
-    if( haystack[i] === needle[0]){
-      while(count<=needle.length){
-        if(needle[count] !== haystack[i+count]){
-          break;
+    if(haystack.length >= needle.length){
+      if( haystack[i] === needle[0]){
+        while(count<=needle.length){
+          if(needle[count] !== haystack[i+count]){
+            break;
+          }
+          if(!haystack[i+count] && needle[count]){
+            return -1;
+          }
+          count++;
         }
-        if(!haystack[i+count] && needle[count]){
-          return -1;
-        }
-        count++;
+        return i;
       }
-      return i;
     }
   }
   return -1;
