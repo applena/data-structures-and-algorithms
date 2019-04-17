@@ -17,4 +17,22 @@ function countUniqueValues(arr){
   return count;
 }
 
-console.log(countUniqueValues([1,1, 1, 6]));
+// console.log(countUniqueValues([1,1, 1, 6]));
+
+function countUniqueValuesNew(arr){
+  let j = 1;
+
+  for(let i = 0; i<arr.length; i++){
+    if(arr[i] === arr[j]){
+      j++;
+    } else {
+      i++;
+      arr[i] = arr[j];
+      console.log(arr);
+    }
+    // console.log(arr);
+    return i+1;
+  }
+}
+
+console.log(countUniqueValuesNew([1,2,3,3,3,4,5,5,6]));
