@@ -57,7 +57,7 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = (input) => {
-  return input.toString().match(/^[oO]ct ober?/g);
+  return input.toString().match(/^[oO]ct(ober)?$/g);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,7 +68,14 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
-  
+  let resultArr = [];
+
+  str.split(' ').forEach(word => {
+    if(word.match(/\w$/)){
+      resultArr.push(`${word} `);
+    }
+  });
+  return resultArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -80,7 +87,7 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 ------------------------------------------------------------------------------------------------ */
 
 let hangman = (str) => {
-  
+  return str.replace(/[aeiou]/g, '_');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -93,7 +100,14 @@ Hint: All of these words end with the letters "ells".
 const seashells = 'She sells seashells by the seashore. The shells she sells are surely seashells. So if she sells shells on the seashore, I\'m sure she sells seashore shells.';
 
 const findShells = (str) => {
+  let resultArr = [];
+  str.replace(/[.,]/g, '').split(' ').forEach(word => {
+    if(word.match(/ells$/)){
+      resultArr.push(word);
+    }
+  });
 
+  return resultArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
